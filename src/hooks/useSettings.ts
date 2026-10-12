@@ -2,7 +2,7 @@ import { call } from "@decky/api";
 import { useEffect, useState } from "react";
 import { BehaviorSubject } from "rxjs";
 
-export type Badge = StatusBadge | TagBadge;
+export type Badge = StatusBadge | TagBadge | VersionBadge | DateBadge;
 
 export type TagBadge = {
   type: "tag";
@@ -13,6 +13,25 @@ export type StatusBadge = {
   type: "status";
   status: "pending" | "completed" | "in-progress" | "abandoned";
 };
+
+export type VersionBadge = {
+  type: "version";
+  value: string;
+};
+
+export type DateBadge = {
+  type: "date";
+  value: string;
+};
+
+/** Badge types that may only appear once per app. */
+export type SingularBadgeType = "status" | "version" | "date";
+
+export function isSingularBadgeType(
+  type: Badge["type"],
+): type is SingularBadgeType {
+  return type === "status" || type === "version" || type === "date";
+}
 
 export type Settings = {
   [key: `badges-${number}`]: Badge[];

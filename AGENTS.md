@@ -2,7 +2,7 @@
 
 ## Project overview
 
-Game Badges is a Decky plugin for Steam Deck. It adds editable, per-game badges to the Steam library app overview. A badge can be a free-form tag or one of four statuses: pending, in progress, completed, or abandoned.
+Game Badges is a Decky plugin for Steam Deck. It adds editable, per-game badges to the Steam library app overview. A badge can be a free-form tag, one of four statuses (pending, in progress, completed, or abandoned), a version, or a date. Tags can appear multiple times per app, but status, version, and date badges are limited to one each per app.
 
 ## How the code is organized
 
@@ -24,9 +24,11 @@ type StatusBadge = {
   type: "status";
   status: "pending" | "completed" | "in-progress" | "abandoned";
 };
+type VersionBadge = { type: "version"; value: string };
+type DateBadge = { type: "date"; value: string };
 ```
 
-Keep frontend types and the data persisted by the Python bridge compatible. Badge ordering is meaningful because it controls display order.
+Keep frontend types and the data persisted by the Python bridge compatible. Badge ordering is meaningful because it controls display order. `status`, `version`, and `date` are singular badge types: at most one of each may exist per app, enforced by the editor (`isSingularBadgeType` in `src/hooks/useSettings.ts`).
 
 ## Development and checks
 

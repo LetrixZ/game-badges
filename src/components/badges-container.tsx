@@ -19,6 +19,10 @@ function getColor(badge: Badge) {
       }
     }
 
+    case "version":
+      return "rgba(139, 92, 246, 0.5)";
+    case "date":
+      return "rgba(20, 184, 166, 0.5)";
     case "tag":
       return "rgba(21, 93, 252, 0.5)";
     default:
@@ -40,6 +44,10 @@ function getLabel(badge: Badge) {
           return "Abandoned";
       }
     }
+    case "version":
+      return `v${badge.value}`;
+    case "date":
+      return badge.value;
     case "tag":
       return badge.value;
   }
