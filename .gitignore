@@ -46,6 +46,10 @@ yalc.lock
 
 backend/out
 
+# Local build staging and dev packages
+/.build/
+/Game_Badges_dev_v*.zip
+
 # Make sure to ignore any instance of the loader's decky_plugin.py
 decky_plugin.py
 

@@ -35,6 +35,7 @@ Keep frontend types and the data persisted by the Python bridge compatible. Badg
 - Install dependencies with `pnpm install`.
 - Build the frontend bundle with `pnpm run build` (Rollup config is in `rollup.config.js`; output goes to `dist/`).
 - `pnpm run watch` runs the Rollup build in watch mode.
+- `./build.sh` builds, packages a dev-labeled archive without changing the plugin identity, and copies it to the Deck using the `deck` SSH alias. Override the target or remote directory with `DECK_SSH_TARGET` or `DECK_REMOTE_DIR`.
 - There is no automated test suite configured: the `test` script in `package.json` intentionally exits with “no test specified.”
 - TypeScript is configured in `tsconfig.json` with strict checks. A standalone check can be run with `pnpm exec tsc --noEmit`.
 
